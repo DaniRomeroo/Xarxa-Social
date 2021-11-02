@@ -1,0 +1,8 @@
+<form #form="ngForm" (ngSubmit)="registrarUsuario()">
+    <h1>Registra usuario</h1>
+
+    <label for="Nombre">Nombre: </label>
+    <input type="text" name="nom" autocomplete="off" [(ngModel)]="nuevoUsuario.nom"><br><br>
+
+    <button type="submit">Submit</button>
+</form>

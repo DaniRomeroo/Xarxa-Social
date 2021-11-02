@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+font-family: Helvetica, Arial, sans-serif;
+font-weight: 200;
+}
+
+.list-group {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 20px;
+    color: black;
+    width: 500px;
+  }
+  .list-group-item {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid rgb(0, 0, 0);
+    cursor: pointer;
+  }
+  .list-group-item:hover {
+    background-color: #3e4144b0;
+    color: white;
+  }
