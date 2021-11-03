@@ -3,7 +3,7 @@ export interface PerfilUsuario {
     cognoms: string,
     edat: number,
     // foto: ,
-    descripció: string,
+    descripcio: string,
     correu: string,
     // contrasenya: ,
   };

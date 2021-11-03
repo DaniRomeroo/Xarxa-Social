@@ -1,4 +1,4 @@
-import { Component,EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PerfilUsuario } from '../interfaces/social.interfaces';
 
 @Component({
@@ -6,20 +6,26 @@ import { PerfilUsuario } from '../interfaces/social.interfaces';
   templateUrl: './registrar.component.html',
   styleUrls: ['./registrar.component.css']
 })
-export class RegistrarComponent {
+export class RegistrarComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
   nuevoUsuario: PerfilUsuario = {
     nom: "",
     cognoms: "",
     edat: 0,
-    descripció: "",
-    correu: "",
+    descripcio: "",
+    correu: ""
   }
+
+  @Input() usuariosComponenteAgregar: PerfilUsuario[] = [];
 
   @Output() onNuevoUsuario: EventEmitter<PerfilUsuario> = new EventEmitter();
 
   registrarUsuario() {
-    
     if(this.nuevoUsuario.nom.trim().length === 0) {
       return;
     }
@@ -30,8 +36,8 @@ export class RegistrarComponent {
       nom: "",
       cognoms: "",
       edat: 0,
-      descripció: "",
-      correu: "",
+      descripcio: "",
+      correu: ""
     }
   }
 }
