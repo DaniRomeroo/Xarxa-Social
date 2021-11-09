@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MainPageComponent } from './main-page/main-page.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { RegistrarComponent } from './registrar/registrar.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { RegistrarComponent } from './registrar/registrar.component';
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ]
 })
 export class SocialModule { }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { PerfilUsuario } from '../interfaces/social.interfaces';
 
 @Component({
@@ -6,26 +7,27 @@ import { PerfilUsuario } from '../interfaces/social.interfaces';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.css']
 })
+
 export class MainPageComponent {
 
-  usuario1: PerfilUsuario = {
-    nom: "Dani",
-    cognoms: "Romero",
-    edat: 19,
-    descripcio: "No Bio Yet",
-    correu: "email@example.com",
-  }
-  usuario2: PerfilUsuario = {
-    nom: "Eric",
-    cognoms: "Farre",
-    edat: 19,
-    descripcio: "No Bio Yet",
-    correu: "email@example.com",
+  router: Router;
+
+  constructor(router: Router) { 
+    this.router = router;
   }
 
-  usuarios: PerfilUsuario[] = [this.usuario1, this.usuario2];
+  ngOnInit(): void {
+
+  }
+
+  usuarios: PerfilUsuario[] = [];
 
   agregarUsuario(data: PerfilUsuario){
     this.usuarios.push(data);
   }
+
+  mostrarRegistro(){
+    this.router.navigate(['registrar']);
+  }
+
 }

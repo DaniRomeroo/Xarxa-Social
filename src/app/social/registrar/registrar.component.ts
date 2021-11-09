@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { PerfilUsuario } from '../interfaces/social.interfaces';
 
 @Component({
@@ -8,11 +9,15 @@ import { PerfilUsuario } from '../interfaces/social.interfaces';
 })
 export class RegistrarComponent implements OnInit {
 
-  constructor() { }
+  router: Router;
 
-  ngOnInit(): void {
+  constructor(router: Router) { 
+    this.router = router;
   }
 
+  ngOnInit(): void {
+
+  }
   nuevoUsuario: PerfilUsuario = {
     nom: "",
     cognoms: "",
@@ -39,5 +44,8 @@ export class RegistrarComponent implements OnInit {
       descripcio: "",
       correu: ""
     }
+
+    this.router.navigate(['']);
+
   }
 }
