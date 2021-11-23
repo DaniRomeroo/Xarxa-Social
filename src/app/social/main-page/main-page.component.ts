@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PerfilUsuario } from '../interfaces/social.interfaces';
 
 @Component({
@@ -9,25 +9,26 @@ import { PerfilUsuario } from '../interfaces/social.interfaces';
 })
 
 export class MainPageComponent {
-
+  
+  route: ActivatedRoute;
   router: Router;
 
-  constructor(router: Router) { 
+  constructor(route: ActivatedRoute, router: Router) { 
+    this.route = route;
     this.router = router;
+
   }
 
   ngOnInit(): void {
 
   }
 
-  usuarios: PerfilUsuario[] = [];
-
-  agregarUsuario(data: PerfilUsuario){
-    this.usuarios.push(data);
-  }
-
   mostrarRegistro(){
     this.router.navigate(['registrar']);
+  }
+
+  mostrarUsuarios(){
+    this.router.navigate(['mostrar']);
   }
 
 }

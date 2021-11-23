@@ -30,22 +30,24 @@ export class RegistrarComponent implements OnInit {
 
   @Output() onNuevoUsuario: EventEmitter<PerfilUsuario> = new EventEmitter();
 
+
   registrarUsuario() {
+    
     if(this.nuevoUsuario.nom.trim().length === 0) {
       return;
     }
 
     this.onNuevoUsuario.emit(this.nuevoUsuario);
 
-    this.nuevoUsuario  = {
+    /*this.nuevoUsuario  = {
       nom: "",
       cognoms: "",
       edat: 0,
       descripcio: "",
       correu: ""
-    }
+    }*/
 
-    this.router.navigate(['']);
+    this.router.navigate(['mostrar', this.nuevoUsuario]);
 
   }
 }

@@ -1,0 +1,5 @@
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let usuario of usuarios">Nombre: {{usuario.nom}}</li>
+</ul>
+<button [routerLink]="['']">Volver</button>
+<button [routerLink]="['/registrar']">Registrar Nuevo</button>
