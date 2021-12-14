@@ -1,9 +1,9 @@
 export interface PerfilUsuario {
     nom: string,
     cognoms: string,
-    edat: number,
+    // edat: number,
     // foto: ,
-    descripcio: string,
+    // descripcio: string,
     correu: string,
-    // contrasenya: ,
+    contrasenya: string
   };

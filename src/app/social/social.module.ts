@@ -5,13 +5,15 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { RouterModule } from '@angular/router';
 import { MostrarComponent } from './mostrar/mostrar.component';
+import { DetallesComponent } from './detalles/detalles.component';
 
 
 @NgModule({
   declarations: [
     MainPageComponent,
     RegistrarComponent,
-    MostrarComponent
+    MostrarComponent,
+    DetallesComponent
   ],
   exports: [
     MainPageComponent

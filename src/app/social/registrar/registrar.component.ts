@@ -21,12 +21,9 @@ export class RegistrarComponent implements OnInit {
   nuevoUsuario: PerfilUsuario = {
     nom: "",
     cognoms: "",
-    edat: 0,
-    descripcio: "",
-    correu: ""
+    correu: "",
+    contrasenya: ""
   }
-
-  @Input() usuariosComponenteAgregar: PerfilUsuario[] = [];
 
   @Output() onNuevoUsuario: EventEmitter<PerfilUsuario> = new EventEmitter();
 
