@@ -23,12 +23,12 @@ export class MainPageComponent {
 
   }
 
-  mostrarRegistro(){
-    this.router.navigate(['registrar']);
-  }
-
   mostrarUsuarios(){
     this.router.navigate(['mostrar']);
+  }
+
+  administrarUsuarios(){
+    this.router.navigate(['administrar']);
   }
 
 }

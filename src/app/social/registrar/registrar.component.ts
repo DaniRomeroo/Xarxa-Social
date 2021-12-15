@@ -47,4 +47,8 @@ export class RegistrarComponent implements OnInit {
     this.router.navigate(['mostrar', this.nuevoUsuario]);
 
   }
+  
+  mostrarUsuarios(){
+    this.router.navigate(['mostrar']);
+  }
 }

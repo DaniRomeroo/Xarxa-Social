@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { AdministrarComponent } from './social/administrar/administrar.component';
 import { DetallesComponent } from './social/detalles/detalles.component';
 import { MainPageComponent } from './social/main-page/main-page.component';
 import { MostrarComponent } from './social/mostrar/mostrar.component';
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: '', component: MainPageComponent },
   { path: 'registrar', component: RegistrarComponent },
   { path: 'mostrar', component: MostrarComponent },
-  { path: 'detalles', component: DetallesComponent }
+  { path: 'detalles', component: DetallesComponent },
+  { path: 'administrar', component: AdministrarComponent }
 ]
 
 @NgModule({

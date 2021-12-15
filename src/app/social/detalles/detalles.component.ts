@@ -17,25 +17,42 @@ export class DetallesComponent implements OnInit {
     correu: "",
     contrasenya: ""
   }
+  usuarioSeleccionadoCopia: PerfilUsuario  = {
+    nom: "",
+    cognoms: "",
+    correu: "",
+    contrasenya: ""
+  }
   usuarios: PerfilUsuario[] = [];
 
   constructor(route: ActivatedRoute, router: Router) { 
     this.route = route;
     this.router = router;
+    this.usuarioSeleccionadoCopia = JSON.parse(localStorage.getItem('usuarioSeleccionado') || '[]');
   }
 
   ngOnInit(): void {
-    this.usuarioSeleccionado = {
-      nom: String(this.route.snapshot.paramMap.get('nom')),
-      cognoms: String(this.route.snapshot.paramMap.get('cognoms')),
-      correu: String(this.route.snapshot.paramMap.get('correu')),
-      contrasenya: String(this.route.snapshot.paramMap.get('contrasenya'))
-    };
+    
+    if(String(this.route.snapshot.paramMap.get('nom')) != 'null') {
+      this.usuarioSeleccionado = {
+        nom: String(this.route.snapshot.paramMap.get('nom')),
+        cognoms: String(this.route.snapshot.paramMap.get('cognoms')),
+        correu: String(this.route.snapshot.paramMap.get('correu')),
+        contrasenya: String(this.route.snapshot.paramMap.get('contrasenya'))
+      };
+    }else{
+      this.usuarioSeleccionado = {
+        nom: String(this.usuarioSeleccionadoCopia.nom),
+        cognoms: String(this.usuarioSeleccionadoCopia.cognoms),
+        correu: String(this.usuarioSeleccionadoCopia.correu),
+        contrasenya: String(this.usuarioSeleccionadoCopia.contrasenya)
+      };
+    }
 
     window.history.replaceState({}, document.title, "/detalles");
   }
 
-  volverMostrarUsusarios(){
+  mostrarUsuarios(){
     this.router.navigate(['mostrar']);
   }
 }

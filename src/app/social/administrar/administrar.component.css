@@ -9,7 +9,6 @@
     padding-left: 0;
     margin-bottom: 20px;
     color: black;
-    width: 500px;
   }
   .list-group-item {
     position: relative;
@@ -18,9 +17,5 @@
     margin-bottom: -1px;
     background-color: #fff;
     border: 1px solid rgb(0, 0, 0);
-    cursor: pointer;
-  }
-  .list-group-item:hover {
-    background-color: #5456cc;
-    color: white;
+    user-select: none;
   }

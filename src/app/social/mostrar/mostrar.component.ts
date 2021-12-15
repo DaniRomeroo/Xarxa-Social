@@ -49,11 +49,14 @@ export class MostrarComponent implements OnInit {
   }
 
   detallesUsuario(usuario: PerfilUsuario){
+
     this.usuarioSeleccionado.nom = usuario.nom;
     this.usuarioSeleccionado.cognoms = usuario.cognoms;
     this.usuarioSeleccionado.correu = usuario.correu;
     this.usuarioSeleccionado.contrasenya = usuario.contrasenya;
 
-    this.router.navigate(['detalles', usuario]);
+    localStorage.setItem('usuarioSeleccionado', JSON.stringify(this.usuarioSeleccionado));
+
+    this.router.navigate(['detalles', this.usuarioSeleccionado]);
   }
 }

@@ -6,6 +6,7 @@ import { RegistrarComponent } from './registrar/registrar.component';
 import { RouterModule } from '@angular/router';
 import { MostrarComponent } from './mostrar/mostrar.component';
 import { DetallesComponent } from './detalles/detalles.component';
+import { AdministrarComponent } from './administrar/administrar.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { DetallesComponent } from './detalles/detalles.component';
     MainPageComponent,
     RegistrarComponent,
     MostrarComponent,
-    DetallesComponent
+    DetallesComponent,
+    AdministrarComponent
   ],
   exports: [
     MainPageComponent
