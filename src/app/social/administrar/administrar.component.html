@@ -13,10 +13,11 @@
                     <div class="flex -mx-3">
                         <div class="w-full px-3 mb-5">
                             <div class="flex">
-                                <ul class="list-group">
+                                <ul class="list-group" *ngIf="usuarios.length != 0; else noVacio">
                                     <li class="list-group-item" *ngFor="let usuario of usuarios">Perfil de: {{usuario.nom}} {{usuario.cognoms}}
                                     <div><button type="submit" (click)="eliminarUsuario(usuario)" class="ml-60 mt-2 bg-red-500 hover:bg-red-700 focus:bg-red-700 text-white rounded-lg px-10 py-1 font-semibold">Eliminar</button></div></li>
                                 </ul>
+                                <ng-template #noVacio>No hay ningun usuario registrado!</ng-template>
                             </div>
                         </div>
                     </div>

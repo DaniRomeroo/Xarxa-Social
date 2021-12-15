@@ -13,9 +13,10 @@
                     <div class="flex -mx-3">
                         <div class="w-full px-3 mb-5">
                             <div class="flex">
-                                <ul class="list-group">
+                                <ul class="list-group" *ngIf="usuarios.length != 0; else noVacio">
                                     <li (click)="detallesUsuario(usuario)" class="list-group-item" *ngFor="let usuario of usuarios">Perfil de: {{usuario.nom}} {{usuario.cognoms}}</li>
                                 </ul>
+                                <ng-template #noVacio>No hay ningun usuario registrado!</ng-template>
                             </div>
                         </div>
                     </div>
