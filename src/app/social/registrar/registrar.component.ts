@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PerfilUsuario } from '../interfaces/social.interfaces';
 
@@ -25,24 +25,11 @@ export class RegistrarComponent implements OnInit {
     contrasenya: ""
   }
 
-  @Output() onNuevoUsuario: EventEmitter<PerfilUsuario> = new EventEmitter();
-
-
   registrarUsuario() {
     
     if(this.nuevoUsuario.nom.trim().length === 0) {
       return;
     }
-
-    this.onNuevoUsuario.emit(this.nuevoUsuario);
-
-    /*this.nuevoUsuario  = {
-      nom: "",
-      cognoms: "",
-      edat: 0,
-      descripcio: "",
-      correu: ""
-    }*/
 
     this.router.navigate(['mostrar', this.nuevoUsuario]);
 
