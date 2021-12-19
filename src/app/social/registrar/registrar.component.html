@@ -10,22 +10,28 @@
                     <p>Introduce información del usuario para registrar</p>
                 </div>
                 <div>
-                    <form #form="ngForm" (ngSubmit)="registrarUsuario()">
+                    <form [formGroup]="registerForm" (ngSubmit)="registrarUsuario()">
                         <div class="flex -mx-3">
                             <div class="w-1/2 px-3 mb-5">
                                 <label for="" class="text-xs font-semibold px-1">Nombre</label>
                                 <div class="flex">
                                     <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
-                                    <input type="text" name="nom" autocomplete="off" [(ngModel)]="nuevoUsuario.nom"
+                                    <input type="text" formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" name="nom" autocomplete="off"
                                     class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Nombre">
+                                </div>
+                                <div *ngIf="submitted && f.nom.errors" class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                    <div *ngIf="f.nom.errors.required">Nombre requerido!</div>
                                 </div>
                             </div>
                             <div class="w-1/2 px-3 mb-5">
                                 <label for="" class="text-xs font-semibold px-1">Apellidos</label>
                                 <div class="flex">
                                     <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
-                                    <input type="text" name="cognoms" autocomplete="off" [(ngModel)]="nuevoUsuario.cognoms" 
+                                    <input type="text" formControlName="cognoms" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cognoms.errors }" name="cognoms" autocomplete="off" 
                                     class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Apellidos">
+                                </div>
+                                <div *ngIf="submitted && f.cognoms.errors" class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                    <div *ngIf="f.cognoms.errors.required">Apellidos requeridos!</div>
                                 </div>
                             </div>
                         </div>
@@ -34,8 +40,12 @@
                                 <label for="" class="text-xs font-semibold px-1">Edad</label>
                                 <div class="flex">
                                     <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-account-outline text-gray-400 text-lg"></i></div>
-                                    <input type="number" name="edat" autocomplete="off" [(ngModel)]="nuevoUsuario.edat" min="0" max="100"
+                                    <input type="number" formControlName="edat" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.edat.errors }" name="edat" autocomplete="off"
                                     class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Edad">
+                                </div>
+                                <div *ngIf="submitted && f.edat.errors" class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                    <div *ngIf="f.edat.errors.required">Edad requerida!</div>
+                                    <div *ngIf="f.edat.errors?.pattern">Edad debe ser un valor real</div>
                                 </div>
                             </div>
                         </div>
@@ -44,8 +54,11 @@
                                 <label for="" class="text-xs font-semibold px-1">Descripción</label>
                                 <div class="flex">
                                     <div class="w-10 z-10 pt-2 pl-1 text-center pointer-events-none flex items-start justify-center"><i class="mdi mdi-format-float-left text-gray-400 text-lg"></i></div>
-                                    <textarea type="text" name="descripcio" autocomplete="off" [(ngModel)]="nuevoUsuario.descripcio"
+                                    <textarea type="text" formControlName="descripcio" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.descripcio.errors }" name="descripcio" autocomplete="off" 
                                     class="w-full -ml-10 pl-10 pr-3 h-28 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="Descripción"></textarea>
+                                </div>
+                                <div *ngIf="submitted && f.descripcio.errors" class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                    <div *ngIf="f.descripcio.errors.required">Descripción requerida!</div>
                                 </div>
                             </div>
                         </div>
@@ -54,8 +67,12 @@
                                 <label for="" class="text-xs font-semibold px-1">Email</label>
                                 <div class="flex">
                                     <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-email-outline text-gray-400 text-lg"></i></div>
-                                    <input type="email" name="correu" autocomplete="off" [(ngModel)]="nuevoUsuario.correu"
+                                    <input type="email" formControlName="correu" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.correu.errors }" name="correu" autocomplete="off"
                                     class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="example@email.com">
+                                </div>
+                                <div *ngIf="submitted && f.correu.errors" class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                    <div *ngIf="f.correu.errors.required">Email requerido!</div>
+                                    <div *ngIf="f.correu.errors?.pattern">Email tiene que ser válido!</div>
                                 </div>
                             </div>
                         </div>
@@ -64,14 +81,18 @@
                                 <label for="" class="text-xs font-semibold px-1">Password</label>
                                 <div class="flex">
                                     <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-lock-outline text-gray-400 text-lg"></i></div>
-                                    <input type="password" name="contrasenya" autocomplete="off" [(ngModel)]="nuevoUsuario.contrasenya"
+                                    <input type="password" formControlName="contrasenya" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contrasenya.errors }" name="contrasenya" autocomplete="off"
                                     class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="************">
+                                </div>
+                                <div *ngIf="submitted && f.contrasenya.errors" class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                    <div *ngIf="f.contrasenya.errors.required">Password requerida!</div>
+                                    <div *ngIf="f.contrasenya.errors.minlength">Password debe tener mínimo 6 carácteres!</div>
                                 </div>
                             </div>
                         </div>
                         <div class="flex -mx-3">
                             <div class="w-full px-3 mb-5">
-                                <button type="submit" class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">Registrar</button>
+                                <button class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">Registrar</button>
                             </div>
                         </div>
                         <div class="flex -mx-3">

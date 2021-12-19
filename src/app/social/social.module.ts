@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { RouterModule } from '@angular/router';
@@ -9,7 +9,7 @@ import { DetallesComponent } from './detalles/detalles.component';
 import { AdministrarComponent } from './administrar/administrar.component';
 
 
-@NgModule({
+@NgModule( {
   declarations: [
     MainPageComponent,
     RegistrarComponent,
@@ -22,8 +22,8 @@ import { AdministrarComponent } from './administrar/administrar.component';
   ],
   imports: [
     CommonModule,
-    FormsModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ]
-})
+} )
 export class SocialModule { }

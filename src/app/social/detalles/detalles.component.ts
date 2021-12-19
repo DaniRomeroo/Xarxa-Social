@@ -67,6 +67,7 @@ export class DetallesComponent implements OnInit
 
   mostrarUsuarios ()
   {
+    localStorage.removeItem( 'usuarioSeleccionado' );
     this.router.navigate( [ 'mostrar' ] );
   }
 }

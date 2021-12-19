@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PerfilUsuario } from '../interfaces/social.interfaces';
 
@@ -11,34 +12,42 @@ export class RegistrarComponent implements OnInit
 {
 
   router: Router;
+  registerForm!: FormGroup;
+  submitted = false;
 
-  constructor ( router: Router )
+  constructor ( router: Router, private formBuilder: FormBuilder )
   {
     this.router = router;
   }
 
-  ngOnInit (): void
+  ngOnInit ()
   {
+    this.registerForm = this.formBuilder.group( {
+      nom: [ '', Validators.required ],
+      cognoms: [ '', Validators.required ],
+      edat: [ '', [ Validators.required, Validators.pattern( "^[1-9][0-9]?$" ) ] ],
+      descripcio: [ '', Validators.required ],
+      correu: [ '', [ Validators.required, Validators.pattern( "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$" ) ] ],
+      contrasenya: [ '', [ Validators.required, Validators.minLength( 6 ) ] ]
+    } );
 
   }
-  nuevoUsuario: PerfilUsuario = {
-    nom: "",
-    cognoms: "",
-    edat: 0,
-    descripcio: "",
-    correu: "",
-    contrasenya: ""
+
+  get f ()
+  {
+    return this.registerForm.controls;
   }
 
   registrarUsuario ()
   {
+    this.submitted = true;
 
-    if ( this.nuevoUsuario.nom.trim().length === 0 || this.nuevoUsuario.cognoms.trim().length === 0 || this.nuevoUsuario.edat === 0 || this.nuevoUsuario.descripcio.trim().length === 0 || this.nuevoUsuario.correu.trim().length === 0 || this.nuevoUsuario.contrasenya.trim().length === 0 )
+    if ( this.registerForm.invalid )
     {
       return;
     }
 
-    this.router.navigate( [ 'mostrar', this.nuevoUsuario ] );
+    this.router.navigate( [ 'mostrar', this.registerForm.value ] );
 
   }
 

@@ -52,7 +52,13 @@ export class AdministrarComponent implements OnInit
       }
     } );
 
-    localStorage.setItem( 'listaUsuarios', JSON.stringify( this.usuarios ) );
+    if ( this.usuarios.length === 0 )
+    {
+      localStorage.removeItem( 'listaUsuarios' );
+    } else
+    {
+      localStorage.setItem( 'listaUsuarios', JSON.stringify( this.usuarios ) );
+    }
 
     this.router.navigate( [ 'administrar' ] );
   }
