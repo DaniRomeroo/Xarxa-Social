@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PerfilUsuario } from '../interfaces/social.interfaces';
+import Swal from 'sweetalert2';
 
 @Component( {
   selector: 'app-administrar',
@@ -52,13 +53,22 @@ export class AdministrarComponent implements OnInit
       }
     } );
 
-    if ( this.usuarios.length === 0 )
+    Swal.fire( {
+      position: 'center',
+      icon: 'error',
+      title: 'Usuario eliminado correctamente!',
+      showConfirmButton: false,
+      timer: 1700
+    } ).then( () =>
     {
-      localStorage.removeItem( 'listaUsuarios' );
-    } else
-    {
-      localStorage.setItem( 'listaUsuarios', JSON.stringify( this.usuarios ) );
-    }
+      if ( this.usuarios.length === 0 )
+      {
+        localStorage.removeItem( 'listaUsuarios' );
+      } else
+      {
+        localStorage.setItem( 'listaUsuarios', JSON.stringify( this.usuarios ) );
+      }
+    } );
 
     this.router.navigate( [ 'administrar' ] );
   }

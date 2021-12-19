@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfirmedValidator } from '../confirmar.validator';
+import Swal from 'sweetalert2';
 
 @Component( {
   selector: 'app-registrar',
@@ -50,8 +51,16 @@ export class RegistrarComponent implements OnInit
       return;
     }
 
-    this.router.navigate( [ 'mostrar', this.registerForm.value ] );
-
+    Swal.fire( {
+      position: 'center',
+      icon: 'success',
+      title: 'Usuario registrado correctamente!',
+      showConfirmButton: false,
+      timer: 1700
+    } ).then( () =>
+    {
+      this.router.navigate( [ 'mostrar', this.registerForm.value ] );
+    } );
   }
 
   mostrarUsuarios ()

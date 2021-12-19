@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MainPageComponent } from './main-page/main-page.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { RouterModule } from '@angular/router';
